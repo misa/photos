@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- App icon -->
+    <color name="icon_launcher_fill">#b09443</color>
+    <color name="icon_launcher_image">#054c00</color>
+    <color name="icon_launcher_frame">#fdd96e</color>
+
 </resources>
