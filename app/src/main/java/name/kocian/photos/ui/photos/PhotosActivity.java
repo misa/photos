@@ -21,7 +21,8 @@ import butterknife.OnClick;
 import name.kocian.photos.R;
 import name.kocian.photos.model.Photo;
 import name.kocian.photos.ui.BaseActivity;
-import name.kocian.photos.utils.SpacesItemDecoration;
+import name.kocian.photos.utils.ItemOffsetDecoration;
+import timber.log.Timber;
 
 /**
  * Photos list activity
@@ -105,9 +106,11 @@ public class PhotosActivity extends BaseActivity implements PhotosContract.View 
 
         PhotosAdapter adapter = new PhotosAdapter(this, photos);
 
-        rvPhotos.setLayoutManager(new GridLayoutManager(this, 2));
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
-        rvPhotos.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
+        int column = (int) (160 * getResources().getDisplayMetrics().density);
+        int columns = (int) (getResources().getDisplayMetrics().widthPixels / column);
+
+        rvPhotos.setLayoutManager(new GridLayoutManager(this, columns));
+        rvPhotos.addItemDecoration(new ItemOffsetDecoration(this, R.dimen.grid_spacing));
         rvPhotos.setNestedScrollingEnabled(false);
         rvPhotos.setAdapter(adapter);
         rvPhotos.setVisibility(View.VISIBLE);

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,14 +72,12 @@ class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
 
         holder.tvTitle.setText(photo.getTitle());
 
-        int border = (int) (mContext.getResources().getDisplayMetrics().density * 2 * 4);
-
-        Picasso.with(mContext)
+        Glide
+                .with(mContext)
                 .load(photo.getThumb().getThumb())
-                .placeholder(R.drawable.ic_placeholder)
-                .resize((mContext.getResources().getDisplayMetrics().widthPixels / 2) - border,
-                        (int) (160 * mContext.getResources().getDisplayMetrics().density))
                 .centerCrop()
+                .placeholder(R.raw.placeholder)
+                .crossFade()
                 .into(holder.ivPhoto);
     }
 
