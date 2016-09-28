@@ -15,10 +15,21 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
+        debug {
+            buildConfigField("String", "REST_BASE_URL", "\"http://api.flickr.com/services/feeds/\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "REST_BASE_URL", "\"http://api.flickr.com/services/feeds/\"")
         }
     }
 }
@@ -28,9 +39,11 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:support-annotations:24.2.1'
+    compile 'com.android.support:support-vector-drawable:24.2.1'
 
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
     compile 'com.jakewharton.timber:timber:4.2.0'
 
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
